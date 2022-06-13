@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <title>Flask Todos</title>
+    </head>
+    <body>
+            <h1>Flask Todo App</h1>
+            <div id="todo-form" class="form">
+                <form action="/" method="POST">
+                    <input type="text" name="item"/>
+                    <input type="submit"/>
+                </form>
+            </div>
+            <div class="todos">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Todo</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for todo in todos%}
+                        <tr>
+                            <td>{{todo.content}}</td>
+                            <td>
+                                <a href="">Delete</a> <br>
+                                <a href="">Update</a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+    </body>
+</html>
