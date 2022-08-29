@@ -28,11 +28,14 @@ def index():
 
         return render_template("todo.html", todos = todos)
 
-
-
-@app.route("/save")
-def hellow():
-    return "Hello World"
-
+@app.route('/delete/<int:id>')
+def delete(id):
+    task_to_delete = Todo.query.find_filter(id=id).first()
+    try:
+        db.session.delete(task_to_delete)
+        db.session.commit()
+        return redirect('/')
+    except:
+        return 'There was an error while deleting that task'
 
 
